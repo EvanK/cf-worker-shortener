@@ -1,0 +1,6 @@
+{
+  "prod/example": "https://httpbin.org/anything",
+  "stag/example": "https://httpbin.org/anything",
+  "goog": "https://google.com/?q=a+search+string",
+  "broken": "http//aninvaliddomain://foo/bar"
+}

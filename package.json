@@ -1,0 +1,11 @@
+{
+  "name": "cf-worker-shortener",
+  "version": "0.0.1",
+  "description": "Redirect of various apps to provide a consistent \"live url\" for any given app on any given environment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

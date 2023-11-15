@@ -1,0 +1,24 @@
+name: Update url mapping in KV store
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - urls.json
+      - .github/workflows/urls.yml
+
+jobs:
+  urls:
+    runs-on: ubuntu-latest
+    name: Batch update the KV store
+    steps:
+      - uses: actions/checkout@v2
+      - name: Reformat urls JSON for batch operation
+        run: cat urls.json | jq -cM '.|to_entries' > batched.json
+      - name: Batch update url mappings
+        uses: cloudflare/wrangler-action@2.0.0
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: kv:bulk put --binding=FRAMER batched.json

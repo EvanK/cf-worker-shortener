@@ -1,0 +1,28 @@
+# name of our worker
+name = "framer"
+
+# entrypoint script
+main = "./index.js"
+
+# ID of the account associated with your zone
+# can also be specified through the CLOUDFLARE_ACCOUNT_ID environment var
+# or inferred when logged in thru wrangler cli
+#account_id = ""
+
+# note for CI/CD, we can also provide the CLOUDFLARE_API_TOKEN environment var
+
+# would deploy to a *.workers.dev domain when true
+workers_dev = false
+
+# necessary for forward/backward compat on publish
+compatibility_date = "2022-09-15"
+
+# route(s) where we deploy the worker and accept incoming requests
+routes = [
+  { pattern = "https://*evanskaufman.com/apps/*", zone_name = "evanskaufman.com" }
+]
+
+# namespace for KV where we store url mappings
+kv_namespaces = [
+  { binding = "FRAMER", id = "bce88bad1605495fac4ae3d25467924a" }
+]
